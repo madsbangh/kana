@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hiragana/Katakana Trainer</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="icon" type="img/png" href="/hiragana/A.png">
+    <style>
+        #app {
+            text-align: center;
+        }
+
+        #question {
+            margin-bottom: 20px;
+        }
+
+        #kana-container {
+            height: 170px;
+            line-height: 170px;
+        }
+
+        #kana-img {
+            opacity: 1;
+        }
+
+            #kana-img.entering {
+                transition-timing-function: ease-out;
+                transform: translateX(50px);
+                opacity: 0;
+            }
+
+            #kana-img.leaving {
+                transition-timing-function: ease-in;
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+        .transitioning {
+            transition: all .2s;
+        }
+
+        #answer.correct {
+            background: #5dc42e;
+        }
+
+        #answer.wrong {
+            background: #d93131;
+        }
+
+        #answer-panel.invis {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" onclick="hirakata('hiragana')">Hiragana</a>
+    <a href="#" onclick="hirakata('katakana')">Katakana</a>
+    <div class="container">
+        <noscript>
+            <div class="alert alert-warning">
+                <p><strong>JavaScript disabled!</strong> This app needs JavaScript to function.</p>
+            </div>
+        </noscript>
+        <div id="app" class="row"">
+            <div id="question">
+                <h2>Guess the following <span class="hk">hiragana</span></h2>
+                <div id="kana-container">
+                    <img id="kana-img" src="/hiragana/A.png" />
+                </div>
+            </div>
+            <div id="answer" class="jumbotron">
+                <h3>Romaji</h3>
+                <p id="answer-panel" class=" transitioning">
+                    <button class="ans-btn btn btn-lg btn-default" type="button" onclick="guess(this)">A</button>
+                </p>
+            </div>
+        </div>
+        <p style="margin-top: 20%;">
+            Hiragana drawings by User:Pmx [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a> or <a href="http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0">CC BY-SA 2.5-2.0-1.0</a>], <a href="http://commons.wikimedia.org/wiki/File%3ATable_hiragana.svg">via Wikimedia Commons</a>.
+            <br>
+            Katakana drawings by User:Pmx (Based upon Image:Table katakana.jpg) [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>, <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA-3.0</a> or <a href="http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0">CC BY-SA 2.5-2.0-1.0</a>], <a href="http://commons.wikimedia.org/wiki/File%3ATable_katakana.svg">via Wikimedia Commons</a>.
+        </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/transparency/0.9.14/transparency.min.js"></script>
+    <script src="/kana.js"></script>
+</body>
+</html>
