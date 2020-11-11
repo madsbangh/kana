@@ -70,7 +70,7 @@ function newButtons(number) {
 }
 
 function endLeaving() {
-    $('#kana-img').attr('src', `/${hk}/${curAns}.png`)
+    $('#kana-img').attr('src', `${hk}/${curAns}.png`)
         .removeClass('transitioning leaving')
         .addClass('entering')
         .one('load', beginEntering);
